@@ -20,10 +20,12 @@ const style = (cb) => {
 		.pipe(rename('bundle.min.css'))
 		.pipe(sourcemaps.write());
 
-	sources.pipe(dest('dist'));
 	sources.pipe(dest('public/dist')); // run in server
 	cb();
 };
 
+const copy = (cb) => src('public/dist/**/*').pipe(dest('dist'));
+
 watch('stylesheets/**/*.styl', style);
-exports.default = (cb) => { cb() };
+exports.default = (cb) => { cb(); };
+exports.copy = (cb) => { copy(); cb(); }

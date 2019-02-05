@@ -14,9 +14,11 @@ inlineFlex($direction = row, $justify = center, $items = center)
 	flex-direction $direction
 	justify-content $justify
 	align-items $items
+	
+$page-horinzontal-margin = 45px;
 
 // brand
-.my-brand 
+a.my-brand 
 	position relative
 	
 	&:after
@@ -40,6 +42,51 @@ inlineFlex($direction = row, $justify = center, $items = center)
 		z-index 1
 		
 // page header
-.page-header 
+header.page-header 
+	position absolute
+	width 100% 
+	top 0
+	left 0
 	flex(row, space-between)
-	padding 15px 45px
+	padding 15px $page-horinzontal-margin
+	
+	> .social-list
+		> .social
+			display inline-block
+			width 18px
+			height 18px
+			
+			& + .social 
+				margin-left 10px
+
+// me
+section.me
+	flex(row, flex-start)
+	min-height 100vh
+	padding-left $page-horinzontal-margin
+	padding-right $page-horinzontal-margin
+	
+	> .container
+		font-size 34px
+		max-width 768px
+
+		> .title
+			font-size 1em
+			font-weight 300
+			margin-bottom 20px
+			
+			> .name
+				font-weight 500
+				color #e4e4e4		
+				
+		> .about 
+			font-size .55em
+			line-height 1.6em
+			font-weight 400
+			
+			> span.role
+				font-weight 500
+				
+			> span.highlighted
+				font-weight 500
+				color #e4e4e4
