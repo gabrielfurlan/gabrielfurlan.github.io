@@ -1,0 +1,45 @@
+// initial formats
+body
+	font-family 'Roboto', sans-serif
+	font-weight 300
+
+flex($direction = row, $justify = center, $items = center)
+	display flex
+	flex-direction $direction
+	justify-content $justify
+	align-items $items	
+
+inlineFlex($direction = row, $justify = center, $items = center)
+	display inline-flex
+	flex-direction $direction
+	justify-content $justify
+	align-items $items
+
+// brand
+.my-brand 
+	position relative
+	
+	&:after
+		content ''
+		display block
+		position absolute
+		width 100%
+		height 100%
+		left 5px
+		top 5px
+		background-color #e4e4e4
+		z-index -1
+
+	> span
+		flex()
+		font-size 20px
+		color #000
+		border solid 2px #000
+		width 40px
+		height 40px 
+		z-index 1
+		
+// page header
+.page-header 
+	flex(row, space-between)
+	padding 15px 45px
