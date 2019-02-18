@@ -14,12 +14,12 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" media="screen" href="/dist/bundle.min.css" />
 </head>
-<body>
+<body class='__primary'>
 
 	<!-- header -->
 	<header class='page-header'>
 		<!-- my brand -->
-		<a class='my-brand' href='#'><span>G</span></a>
+		<a class='my-brand __primary' href='#'><span>G</span></a>
 		
 		<!--social list -->
 		<ul class='social-list'>
@@ -53,14 +53,74 @@
 	<!-- me -->
 	<section id='me' class='me'>
 		<div class='container'>
-			<h1 class='title'>Olá, eu sou o <span class='name'>Gabriel Furlan</span></h1>
+			<h1 class='title'>Olá, eu sou o <span class='name __primary'>Gabriel Furlan</span></h1>
 			<p class='about'>
-				Um <span class='role'>engenheiro de software</span> apaixonado por encontrar o melhor caminho para incríveis <span class='highlighted'>experiências de usuário</span>. Como programador, estou em busca constante de <span class='highlighted'>melhores práticas</span> e também experimentando <span class='highlighted'>novas tecnologias</span>. Amo contribuir com a comunidade de desenvolvedores e minha equipe.
+				Um <span class='role'>engenheiro de software</span> apaixonado por encontrar o melhor caminho para incríveis <span class='highlighted __primary'>experiências de usuário</span>. Como programador, estou em busca constante de <span class='highlighted __primary'>melhores práticas</span> e também experimentando <span class='highlighted __primary'>novas tecnologias</span>. Amo contribuir com a comunidade de desenvolvedores e minha equipe.
 			</p>		
 		</div>
-		<a href='#jobs' class='show-jobs-button'>Conheça meus trabalhos</a>
+		<a href='#jobs' class='show-jobs-button __primary'>Conheça meus trabalhos</a>
 	</section>
 
+
+	<!-- skills -->
+	<section class="skills" id="skills">
+		<h2 class="title">Listando algumas das técnologias que utilizei em meus trabalhos.</h2>
+		<ul class="skill-list">
+			<h3 class="subtitle">Na arte de fazer as coisas ficarem rápidas e bonitas em todos os tipo de dispositivos.</h3>
+			<li>HTML5 (semântico, optimizado e acessível)</li>
+			<li>CSS3</li>
+			<li>Stylus</li>
+			<li>Sass</li>
+			<li>PostCSS</li>
+			<li>BEM</li>
+			<li>JS (vanilla e es6+)</li>
+			<li>NodeJS</li>
+			<li>npm/yarn</li>
+			<li>Gulp</li>
+			<li>Webpack</li>
+			<li>Babel</li>
+			<li>React/React-Native</li>
+			<li>Redux</li>
+			<li>Apollo</li>
+			<li>SocketIO</li>
+			<li>ESlint (Airbnb e Google style guide)</li>
+		</ul>
+		<ul class="skill-list">
+			<h3 class="subtitle">Toca na cabeça e tela preta.</h3>
+			<li>NodeJS</li>
+			<li>Restful API</li>
+			<li>MongoDB</li>
+			<li>MySQL</li>
+			<li>SQL Server</li>
+			<li>Graphql</li>
+			<li>Apollo Server</li>
+			<li>SocketIO</li>
+			<li>Docker</li>
+			<li>AWS Route53</li>
+			<li>AWS Elastic Beanstalk</li>
+			<li>AWS Load Balance</li>
+			<li>AWS EC2</li>
+			<li>AWS Elastic Container Service</li>
+			<li>AWS Code Pipeline</li>
+			<li>AWS Code Build</li>
+			<li>AWS RDS</li>
+			<li>AWS Elasticsearch</li>
+			<li>Java</li>
+			<li>SpringBoot</li>
+			<li>PHP</li>
+			<li>Laravel</li>
+			<li>Codeigniter</li>
+		</ul>
+		<ul class="skill-list">
+			<h3 class="subtitle">Outros conhecimentos.</h3>
+			<li>CI/CD</li>
+			<li>Agile (Scrum e XP)</li>
+			<li>UX (Aprendi algumas coisas)</li>
+			<li>Inglês intemediário (Conversa)</li>
+			<li>Cálculo e estatística</li>
+		</ul>
+	</section> 	
+	
 	<!-- jobs -->
 	<section class='jobs' id='jobs'>
 		<h2 class='title'>Aqui estão alguns dos projetos que tive a honra de participar.</h2>
@@ -72,7 +132,43 @@
 	<!-- footer -->
 	<footer class='footer'>
 		<div class='copyright'>&copy; 2019 Gabriel Furlan</div>
-		<div class='version'>v0.04</div>
+		<div class='version'>v0.06</div>
 	</footer>
+
+	<script>
+		
+		var colors = ['__primary', '__secondary', '__terciary', '__fourth', '__fiveth'];
+		var active = 0;
+
+		window.addEventListener('load', function() {
+			_changeTheme();
+		});
+
+		function _changeTheme() {
+			setTimeout(function() {
+				var documents = document.querySelectorAll(`.${colors[active]}`);
+
+				var promises = Array.from(documents).map(function(doc){
+					doc.classList.remove(colors[active]);
+					if(active === colors.length - 1)
+						doc.classList.add(colors[0]);
+					else 
+						doc.classList.add(colors[active + 1]);
+				});
+
+				Promise.all(promises).then(function() {
+					if(active === colors.length - 1) 
+						active = 0;
+					else
+						active++;
+					
+					_changeTheme();
+				}).catch(function(err) {
+					console.log(err);
+				});
+			}, 3000);
+		}
+
+	</script>
 </body>
 </html>
